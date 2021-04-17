@@ -1,4 +1,5 @@
 require('dotenv').config({path: './src/Config/.env'});
+
 const mongoose = require('mongoose');
 const cmd = require('cli-color');
 
@@ -11,7 +12,6 @@ const connectDB = async () => {
             useCreateIndex: true,
             useFindAndModify: false,
         });
-
         console.log(cmd.greenBright("Conectado ao cluster do MongoDB"));
     } catch (error) {
         console.error(cmd.redBright("Falha em conectar ao cluster do MongoDB"));

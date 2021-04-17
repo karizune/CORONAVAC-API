@@ -1,26 +1,22 @@
-const { request, response } = require('express');
-const express = require('express');
-const app = express();
+const express = require("express");
+const cors = require('cors');
 const cmd = require('cli-color');
 
-const porta = 3333
+const routes = require('./routes/pacientesRota');
+const routes2 = require ('./routes/vacinaRota');
+const Authroutes = require("./routes/authRota");
+const connectDB = require("./infra/database");
+const app = express();
 
+connectDB();
+
+app.use(cors());
 app.use(express.json());
+app.use('/auth', Authroutes );
+app.use('/paciente', routes);
+app.use('/vacina', routes2);
 
-app.get('/hello-world', (request, response)=>{
-    return response.send('Olá mundo');
+module.exports = app.listen(process.env.PORT || 3333, () => {
+    process.stdout.write(cmd.erase.screen);
+    console.log(cmd.greenBright("Servidor rodando ", cmd.blueBright("(☞ﾟヮﾟ)☞")));
 });
-
-app.get('/aluno/:nome',(request,response)=>{
-    return response.send(`Olá ${request.params.nome}`)
-});
-
-app.post('/alunos',(request,response)=>{
-    console.log(request.body);
-    return response.json({"mensagem":`olá ${request.body.nome}`});
-});
-
-
-app.listen(porta);
-process.stdout.write(cmd.erase.screen);
-console.log(cmd.greenBright(`servidor rodando na porta: ${porta}`));
