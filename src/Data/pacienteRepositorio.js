@@ -33,7 +33,7 @@ module.exports.removePaciente = async function (cpf) {
     return pacienteRepositorio.deleteOne ({ cpf });
 }
 
-module.exports.verificaEmailSenha = async function (email, senha){
+module.exports.verificaEmailSenha = function (email, senha){
     return pacienteRepositorio.findOne({email, senha});
 }
 

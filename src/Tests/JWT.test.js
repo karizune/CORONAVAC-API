@@ -1,23 +1,22 @@
+require('dotenv').config({path: './src/Config/.env'});
 const app = require('../index');
 const request = require('supertest');
-const { uuid, isUuid } = require('uuidv4');
-const { response } = require('express');
-jest.useFakeTimers()
+const jwt = require('jsonwebtoken');
 
+const token = jwt.sign({ token: process.env.JWT_SECRET_TOKEN }, process.env.JWT_KEY)
 
-let token;
+let token
 
-beforeAll((done)=>{
+beforeAll(()=>{
     request(app).post('/auth/').send({
         "email":"luanchrystian2@gmail.com",
         "senha":"123"
     }).end((err, response)=>{
         token = response.body.token;
-        done();
     })
 })
 
-describe("Teste 1 - Consegui autenticação JWT", () => {
+describe("Teste 1 - Autenticação JWT", () => {
     it("POST", async () => {
         const response = await request(app)
             .post("/auth/")
@@ -30,6 +29,8 @@ describe("Teste 1 - Consegui autenticação JWT", () => {
 });
 
 describe("Teste 2 - Buscar paciente por CPF", () => {
+
+    console.log(token)
     it("GET", async () => {
         const response = await request(app)
             .get('/paciente/13943511600')

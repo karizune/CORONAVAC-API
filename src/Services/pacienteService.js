@@ -11,7 +11,6 @@ module.exports.buscaPacientePorCpf = async function(cpf){
 
 module.exports.inserePaciente = async function(novoPaciente){
   const pacienteRetorno = await pacienteRepositorio.buscaPaciente(novoPaciente.cpf);
-  console.log(pacienteRetorno.length);
     if (pacienteRetorno.length != 0) {
       return null;
     }
@@ -47,8 +46,8 @@ module.exports.buscaPacientePorEmail = async function(email){
   return await pacienteRepositorio.buscaPacientePorEmail(email);
 }
 
-module.exports.verificaEmailSenha= async function(email , senha){
-  return await pacienteRepositorio.verificaEmailSenha(email, senha);
+module.exports.verificaEmailSenha= function(email , senha){
+  return pacienteRepositorio.verificaEmailSenha(email, senha);
 }
     
 

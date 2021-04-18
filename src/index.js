@@ -17,6 +17,5 @@ app.use('/paciente', routes);
 app.use('/vacina', routes2);
 
 module.exports = app.listen(process.env.PORT || 3333, () => {
-    process.stdout.write(cmd.erase.screen);
     console.log(cmd.greenBright("Servidor rodando ", cmd.blueBright("(☞ﾟヮﾟ)☞")));
 });
