@@ -5,6 +5,7 @@ const { validate } = require('../Validators/validators.js');
 const { PacienteValidationRules } = require('../Validators/pacienteValidators.js');
 
 const routes = Router();
+
 routes.get('/', async (request, response) => {
     const pacienteRetorno = await pacienteServico.buscaPaciente();
     return response.json(pacienteRetorno);
@@ -18,7 +19,6 @@ routes.get('/:cpf', autenticacaoJWT.verificarToken, async (request, response) =>
 
 routes.post('/', PacienteValidationRules(), validate , async (request, response) => {
     const { nome, cpf, altura,  peso, imc , classificacao, dataNascimento, cidade, UF , listaComorbidades , JaTeveCovid, email, senha } = request.body;
-    console.log(request.body);
     const novoPaciente = { nome, cpf, altura, peso , imc, classificacao, dataNascimento, cidade, UF , listaComorbidades , JaTeveCovid, email, senha};
     const pacienteRetorno = await pacienteServico.inserePaciente(novoPaciente);
     if (pacienteRetorno === null){
@@ -40,7 +40,6 @@ routes.put('/:cpf', async (request, response) => {
         
 routes.delete('/:cpf', autenticacaoJWT.verificarToken, async (request, response) => {   
     const { cpf } = request.params;
-    console.log(cpf); 
     const pacienteRetorno = await pacienteServico.removePaciente(cpf);
     if (!pacienteRetorno){
         return response.status(404).json({ "error": "Paciente não encontrado!!" });

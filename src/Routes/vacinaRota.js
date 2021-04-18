@@ -18,7 +18,6 @@ routes2.get('/:cpf', autenticacaoJWT.verificarToken, async (request, response) =
 
 routes2.post('/', VacinaValidationRules() ,  validate, async (request, response) => {
     const { nome, dataSolicitacao, dataPrevista, nroDose, flTomou, dataVacinacao,cpf } = request.body;
-    console.log(request.body);
     const novaVacinacao = {  nome, dataSolicitacao, dataPrevista, nroDose, flTomou, dataVacinacao, cpf};
     const vacinaRetorno = await vacinaServico.inserePacienteParaVacina(novaVacinacao);
     if (vacinaRetorno === null){
@@ -40,7 +39,6 @@ routes2.put('/vacina/:cpf', async (request, response) => {
         
 routes2.delete('/:cpf', autenticacaoJWT.verificarToken, async (request, response) => { 
     const { cpf } = request.params;
-    console.log(cpf); 
     const vacinaRetorno = await vacinaServico.removeVacinacao(cpf);
     if (!vacinaRetorno){
         return response.status(404).json({ "error": "Paciente não encontrado!!" });
