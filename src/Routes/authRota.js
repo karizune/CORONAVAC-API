@@ -10,6 +10,4 @@ Authroutes.post('/', async (request, response) => {
     return response.json(retornoToken);
 });
 
-
-
 module.exports = Authroutes;

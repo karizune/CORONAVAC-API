@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken');
 const pacienteServico = require('../Services/pacienteService');
 
 module.exports.verificarToken = async (request, response, next) => {
-    const token = request.header('Authorization').split(' ');
     try {
+        const token = request.header('Authorization').split(' ');
         if (token == undefined){
             throw new Error();
         }
