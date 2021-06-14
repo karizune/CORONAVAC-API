@@ -9,7 +9,6 @@ module.exports.verificarToken = async (request, response, next) => {
       throw new Error();
     }
     const data = jwt.verify(token[1], process.env.JWT_KEY);
-    console.log(data);
     const paciente = await pacienteServico.buscaPacientePorEmail(data.email);
     if (!paciente) {
       throw new Error();

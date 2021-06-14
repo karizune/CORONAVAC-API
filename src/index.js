@@ -5,6 +5,7 @@ const cmd = require("cli-color");
 const routes = require("./routes/pacientesRota");
 const routes2 = require("./routes/vacinaRota");
 const Authroutes = require("./routes/authRota");
+
 const connectDB = require("./infra/database");
 const app = express();
 

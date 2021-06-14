@@ -3,24 +3,24 @@ module.exports.imc = function (peso, altura) {
 }
 
 module.exports.classificacao = function(vlrIMC) { 
-    switch (vlrIMC) {
-        case vlrIMC < 18.5:
-            "Peso baixo"
-            break;
-        case vlrIMC >= 18.5 && vlrIMC < 24.9:
-            "Peso normal"
-            break;
-        case vlrIMC >= 25.0 && vlrIMC < 29.9:
-            "Sobrepeso"
-        break;
-        case vlrIMC >= 30.0  && vlrIMC < 34.9:
-            "Obesidade de primeiro grau"
-        break;
-        case vlrIMC >= 35.0  && vlrIMC < 39.9:
-            "Obesidade severa de segundo grau"
-        break;
-        case vlrIMC >= 40.0:
-            "Obesidade severa de terceiro grau"
-        break;
+    let classification = ''
+    if(vlrIMC < 18.5){
+        classification = "Peso baixo"
     }
+    else if(vlrIMC >= 18.5 && vlrIMC < 24.9){
+        classification = "Peso normal"
+    }
+    else if(vlrIMC >= 25.0 && vlrIMC < 29.9){
+        classification = "Sobrepeso"
+    }
+    else if(vlrIMC >= 30.0  && vlrIMC < 34.9){
+        classification = "Obesidade de primeiro grau"
+    }
+    else if(vlrIMC >= 35.0  && vlrIMC < 39.9){
+        classification = "Obesidade severa de segundo grau"
+    }
+    else if(vlrIMC >= 40.0){
+        classification = "Obesidade severa de terceiro grau"
+    }
+    return classification
 }

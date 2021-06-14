@@ -1,3 +1,4 @@
+const { json } = require("express");
 const pacienteRepositorio = require("../Models/Paciente.js");
 
 module.exports.buscaPaciente = async function () {
@@ -7,6 +8,16 @@ module.exports.buscaPaciente = async function () {
 module.exports.buscaPacientePorCpf = async function (cpf) {
   return await pacienteRepositorio.findOne({ cpf });
 };
+
+module.exports.buscaUsuarioPaciente = async function (usuario) {
+  let email = usuario.email;  
+  return await pacienteRepositorio.find({email});
+};
+
+module.exports.insereUsuario = async function (usuario){
+  return await pacienteRepositorio.create(usuario)
+}
+
 
 module.exports.inserePaciente = async function (novoPaciente) {
   const {
@@ -24,6 +35,8 @@ module.exports.inserePaciente = async function (novoPaciente) {
     email,
     senha,
   } = novoPaciente;
+  const retornoPaciente = novoPaciente
+/*
   const retornoPaciente = await pacienteRepositorio.create({
     nome,
     cpf,
@@ -35,10 +48,11 @@ module.exports.inserePaciente = async function (novoPaciente) {
     cidade,
     UF,
     listaComorbidades,
-    JaTeveCovid,
+    JaTeveCovid,x
     email,
     senha,
   });
+  */
   return retornoPaciente;
 };
 

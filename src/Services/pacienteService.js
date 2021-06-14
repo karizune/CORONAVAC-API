@@ -1,18 +1,46 @@
 const pacienteRepositorio = require("../Data/pacienteRepositorio.js");
 const calculadoraImc = require("../util/imc");
 
+//its ok
 module.exports.buscaPaciente = async function () {
   return pacienteRepositorio.buscaPaciente();
 };
 
+//its ok
 module.exports.buscaPacientePorCpf = async function (cpf) {
   return await pacienteRepositorio.buscaPacientePorCpf(cpf);
 };
 
+//its ok
+module.exports.buscaUsuarioPaciente = async function (usuario) {
+  const UsuarioRetorno = await pacienteRepositorio.buscaUsuarioPaciente(usuario);
+  if(UsuarioRetorno != null && UsuarioRetorno.length != 0){
+    if(UsuarioRetorno[0].email == usuario.email && UsuarioRetorno[0].senha == usuario.senha){
+      return UsuarioRetorno
+    }
+  }
+  else{
+    return null;
+  }
+};
+
+module.exports.buscaPacientePorEmail = async function (email) {
+  return await pacienteRepositorio.buscaPacientePorEmail(email);
+};
+
+module.exports.insereUsuario = async function (novoUsuario){
+  const usuarioRetorno = await pacienteRepositorio.buscaPacientePorEmail(novoUsuario.email);
+  if(!usuarioRetorno){
+    return pacienteRepositorio.insereUsuario(novoUsuario);
+  }
+  return null;
+}
+
+
+
+
 module.exports.inserePaciente = async function (novoPaciente) {
-  const pacienteRetorno = await pacienteRepositorio.buscaPaciente(
-    novoPaciente.cpf
-  );
+  const pacienteRetorno = await pacienteRepositorio.buscaPaciente(novoPaciente.cpf);
   if (!pacienteRetorno) {
     return null;
   }

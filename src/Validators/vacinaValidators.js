@@ -29,7 +29,6 @@ const VacinaValidationRules = () => {
       .withMessage("Cpf inválido"),
     body("cpf").custom(async (value) => {
       const resultadoVacina = await vacinaServico.buscaSolicitacaoPorCpf(value);
-      console.log(resultadoVacina);
       if (resultadoVacina != null) {
         throw new Error("CPF já existe, cadastro não permitido!");
       }

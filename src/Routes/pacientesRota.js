@@ -3,12 +3,11 @@ const pacienteServico = require("../Services/pacienteService.js");
 const autenticacaoJWT = require("../Services/authService.js");
 const { validate } = require("../Validators/validators.js");
 const {
-  PacienteValidationRules,
+  PacienteValidationRules,RegistraUsuarioRules
 } = require("../Validators/pacienteValidators.js");
 
 const routes = Router();
 
-//get section
 //ok
 routes.get("/", async (request, response) => {
   const pacienteRetorno = await pacienteServico.buscaPaciente();
@@ -25,6 +24,47 @@ routes.get(
     return response.json(pacienteRetorno);
   }
 );
+
+// login funcionando corretamente (SEM JWT)
+routes.post(
+  "/Login",
+  async (request, response) => {
+    const { email, senha } = request.body;
+    const usuario = { email, senha};
+    let pacienteRetorno;
+    pacienteRetorno = await pacienteServico.buscaUsuarioPaciente(usuario);
+    if (pacienteRetorno != null){
+    return response.status(200).json({ "auth":true, pacienteRetorno });
+    }
+    return response.status(404).json({ "Falha no Login": "Usuário ou senha incorretos" });
+  }
+);
+
+// 
+routes.post("/Register", RegistraUsuarioRules(), validate, async (request, response) => {
+    const {
+      nome,
+      email,
+      senha,
+    } = request.body;
+
+    const novoUsuario = {
+      nome,
+      email,
+      senha,
+    };
+    const usuarioRetorno = await pacienteServico.insereUsuario(novoUsuario);
+    if (usuarioRetorno == null) {
+      return response.status(500).json({ ERROR: "CPF Paciente já existe. Paciente não inserido" });
+    }
+    return response.status(201).json({ usuarioRetorno });
+  }
+);
+
+
+
+
+
 
 //post section
 //insere um novo paciente
@@ -48,7 +88,6 @@ routes.post(
       email,
       senha,
     } = request.body;
-    //destruturação
 
     const novoPaciente = {
       nome,
