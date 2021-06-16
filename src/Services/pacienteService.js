@@ -14,13 +14,11 @@ module.exports.buscaPacientePorCpf = async function (cpf) {
 //its ok
 module.exports.buscaUsuarioPaciente = async function (usuario) {
   const UsuarioRetorno = await pacienteRepositorio.buscaUsuarioPaciente(usuario);
-  if(UsuarioRetorno != null && UsuarioRetorno.length != 0){
-    if(UsuarioRetorno[0].email == usuario.email && UsuarioRetorno[0].senha == usuario.senha){
-      return UsuarioRetorno
-    }
+  if(UsuarioRetorno.email != undefined && UsuarioRetorno.email == usuario.email && UsuarioRetorno.senha == usuario.senha){
+    return UsuarioRetorno
   }
   else{
-    return null;
+    return null
   }
 };
 

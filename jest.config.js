@@ -11,7 +11,7 @@ module.exports = {
   // bail: 0,
 
   // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "C:\\Users\\famil\\AppData\\Local\\Temp\\jest",
+  // cacheDirectory: "C:\\Users\\gabri\\AppData\\Local\\Temp\\jest",
 
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
@@ -184,7 +184,7 @@ module.exports = {
   // unmockedModulePathPatterns: undefined,
 
   // Indicates whether each individual test should be reported during the run
-  verbose: false,
+  // verbose: undefined,
 
   // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
   // watchPathIgnorePatterns: [],

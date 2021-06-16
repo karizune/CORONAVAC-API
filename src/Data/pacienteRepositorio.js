@@ -11,7 +11,7 @@ module.exports.buscaPacientePorCpf = async function (cpf) {
 
 module.exports.buscaUsuarioPaciente = async function (usuario) {
   let email = usuario.email;  
-  return await pacienteRepositorio.find({email});
+  return await pacienteRepositorio.findOne({email});
 };
 
 module.exports.insereUsuario = async function (usuario){
