@@ -1,5 +1,5 @@
 const { json } = require("express");
-const pacienteRepositorio = require("../Models/Paciente.js");
+const pacienteRepositorio = require("../models/paciente.js");
 
 module.exports.buscaPaciente = async function () {
   return pacienteRepositorio.find();
@@ -18,7 +18,6 @@ module.exports.buscaUsuarioPaciente = async function (usuario) {
 module.exports.insereUsuario = async function (usuario){
   return await pacienteRepositorio.create(usuario)
 }
-
 
 module.exports.inserePaciente = async function (novoPaciente) {
   const {

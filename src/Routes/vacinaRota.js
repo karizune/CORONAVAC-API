@@ -1,8 +1,8 @@
 const { Router, request } = require("express");
-const vacinaServico = require("../Services/vacinaService.js");
-const autenticacaoJWT = require("../Services/authService.js");
-const { validate } = require("../Validators/Validators.js");
-const { VacinaValidationRules } = require("../Validators/vacinaValidators.js");
+const vacinaServico = require("../services/vacinaService.js");
+const autenticacaoJWT = require("../services/authService.js");
+const { validate } = require("../validators/validators.js");
+const { VacinaValidationRules } = require("../validators/vacinaValidators.js");
 
 const routes2 = Router();
 routes2.get("/", autenticacaoJWT.verificarToken, async (request, response) => {
@@ -19,7 +19,6 @@ routes2.get(
     return response.json(vacinaRetorno);
   }
 );
-
 
 routes2.post(
   "/",

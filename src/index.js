@@ -20,4 +20,3 @@ app.use("/vacina", routes2);
 module.exports = app.listen(process.env.PORT || 3333, () => {
   console.log(cmd.greenBright("Servidor rodando ", cmd.blueBright("(☞ﾟヮﾟ)☞")));
 });
-

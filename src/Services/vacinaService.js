@@ -1,4 +1,4 @@
-const vacinaRepositorio = require('../Data/vacinaRepositorio');
+const vacinaRepositorio = require('../data/vacinaRepositorio');
 
 module.exports.buscaSolicitacoesVacina = async function(){
     return vacinaRepositorio.buscaSolicitacoesVacina();
@@ -24,7 +24,6 @@ module.exports.atualizaVacinacao = async function (atualizaVacinacao){
     const resultadoVacina = await vacinaRepositorio.atualizaVacinacao(atualizaVacinacao);
     return true;
 }
-
 
 module.exports.removeVacinacao =  async function (cpf){
     const vacinaRetorno = await vacinaRepositorio.buscaSolicitacaoPorCpf(cpf);

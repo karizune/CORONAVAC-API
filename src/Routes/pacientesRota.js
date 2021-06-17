@@ -1,10 +1,10 @@
 const { Router, request } = require("express");
-const pacienteServico = require("../Services/pacienteService.js");
-const autenticacaoJWT = require("../Services/authService.js");
-const { validate } = require("../Validators/validators.js");
+const pacienteServico = require("../services/pacienteService.js");
+const autenticacaoJWT = require("../services/authService.js");
+const { validate } = require("../validators/validators.js");
 const {
   PacienteValidationRules,RegistraUsuarioRules
-} = require("../Validators/pacienteValidators.js");
+} = require("../validators/pacienteValidators.js");
 
 const routes = Router();
 
@@ -13,7 +13,6 @@ routes.get("/", async (request, response) => {
   const pacienteRetorno = await pacienteServico.buscaPaciente();
   return response.json(pacienteRetorno);
 });
-
 
 //ok
 routes.get(

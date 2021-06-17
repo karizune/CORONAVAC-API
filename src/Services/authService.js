@@ -1,6 +1,6 @@
 require("dotenv").config({ path: "./src/Config/.env" });
 const jwt = require("jsonwebtoken");
-const pacienteServico = require("../Services/pacienteService");
+const pacienteServico = require("./pacienteService");
 
 module.exports.verificarToken = async (request, response, next) => {
   try {
@@ -20,7 +20,6 @@ module.exports.verificarToken = async (request, response, next) => {
     response.status(401).send({ error: "Não Autorizado" });
   }
 };
-
 
 module.exports.gerarToken = (email) => {
   if (email == null) {

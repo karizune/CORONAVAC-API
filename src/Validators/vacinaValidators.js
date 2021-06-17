@@ -1,6 +1,6 @@
 const { body, validationResult } = require("express-validator");
-const { validarCPF } = require("../Validators/cpfValidator");
-const vacinaServico = require("../Services/vacinaService");
+const { validarCPF } = require("./cpfValidator");
+const vacinaServico = require("../services/vacinaService");
 
 const VacinaValidationRules = () => {
   return [
@@ -36,7 +36,6 @@ const VacinaValidationRules = () => {
     }),
   ];
 };
-
 
 
 module.exports = {

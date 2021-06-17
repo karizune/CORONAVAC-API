@@ -1,6 +1,6 @@
 const { body, validationResult } = require("express-validator");
-const { validarCPF } = require("../Validators/cpfValidator");
-const pacienteServico = require("../Services/pacienteService");
+const { validarCPF } = require("./cpfValidator");
+const pacienteServico = require("../services/pacienteService");
 //funcao aplica validação
 
 const RegistraUsuarioRules = () => {
@@ -32,6 +32,7 @@ const RegistraUsuarioRules = () => {
   
   return Errors;
 }
+
 
 
 

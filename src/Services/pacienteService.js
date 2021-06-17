@@ -1,4 +1,4 @@
-const pacienteRepositorio = require("../Data/pacienteRepositorio.js");
+const pacienteRepositorio = require("../data/pacienteRepositorio.js");
 const calculadoraImc = require("../util/imc");
 
 //its ok
@@ -21,7 +21,6 @@ module.exports.buscaUsuarioPaciente = async function (usuario) {
     return null
   }
 };
-
 
 module.exports.buscaPacientePorEmail = async function (email) {
   return await pacienteRepositorio.buscaPacientePorEmail(email);
