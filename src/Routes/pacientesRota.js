@@ -14,6 +14,7 @@ routes.get("/", async (request, response) => {
   return response.json(pacienteRetorno);
 });
 
+
 //ok
 routes.get(
   "/:cpf",

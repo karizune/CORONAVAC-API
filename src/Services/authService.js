@@ -21,6 +21,7 @@ module.exports.verificarToken = async (request, response, next) => {
   }
 };
 
+
 module.exports.gerarToken = (email) => {
   if (email == null) {
     return { auth: false, token: null, message: "Error" };

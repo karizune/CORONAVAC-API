@@ -8,6 +8,7 @@ module.exports.buscaPacientePorCpf = async function (cpf){
     return await vacinaRepositorio.find({ cpf });
 }
 
+
 module.exports.buscaSolicitacaoPorCpf = async function (cpf){
     return await vacinaRepositorio.find({ cpf });
 }

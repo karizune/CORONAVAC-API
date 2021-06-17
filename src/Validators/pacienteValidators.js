@@ -36,6 +36,7 @@ const RegistraUsuarioRules = () => {
 
 
 
+
 const PacienteValidationRules = () => {
   return [
     body("nome").notEmpty().withMessage("Nome: obrigatório!!"),

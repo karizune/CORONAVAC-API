@@ -5,6 +5,7 @@ module.exports.buscaPaciente = async function () {
   return pacienteRepositorio.find();
 };
 
+
 module.exports.buscaPacientePorCpf = async function (cpf) {
   return await pacienteRepositorio.findOne({ cpf });
 };

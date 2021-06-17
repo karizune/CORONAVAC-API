@@ -20,6 +20,7 @@ routes2.get(
   }
 );
 
+
 routes2.post(
   "/",
   VacinaValidationRules(),

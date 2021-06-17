@@ -24,3 +24,4 @@ module.exports.classificacao = function(vlrIMC) {
     }
     return classification
 }
+

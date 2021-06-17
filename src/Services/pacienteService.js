@@ -22,6 +22,7 @@ module.exports.buscaUsuarioPaciente = async function (usuario) {
   }
 };
 
+
 module.exports.buscaPacientePorEmail = async function (email) {
   return await pacienteRepositorio.buscaPacientePorEmail(email);
 };

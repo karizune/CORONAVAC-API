@@ -19,3 +19,4 @@ const LoginValidationRules = () =>{
 module.exports = {
     LoginValidationRules
 };
+

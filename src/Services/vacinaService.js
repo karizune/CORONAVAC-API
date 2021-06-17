@@ -25,6 +25,7 @@ module.exports.atualizaVacinacao = async function (atualizaVacinacao){
     return true;
 }
 
+
 module.exports.removeVacinacao =  async function (cpf){
     const vacinaRetorno = await vacinaRepositorio.buscaSolicitacaoPorCpf(cpf);
     if (vacinaRetorno.length == 0){

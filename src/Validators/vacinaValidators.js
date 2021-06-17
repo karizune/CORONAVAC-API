@@ -37,6 +37,8 @@ const VacinaValidationRules = () => {
   ];
 };
 
+
+
 module.exports = {
   VacinaValidationRules,
 };
